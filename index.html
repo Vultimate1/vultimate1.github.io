@@ -28,7 +28,8 @@
     </select>
 	
     <h2> </h2>    <label for="raga">select raga:</label>
-    <select name="raga" id="raga" onclick=getAAnotes()>
+    <input type="text" name="raganame" id="raganame" list="raga"><br>    
+    <datalist id="raga" >
         <option value= "Abheri">Abheri</option>
         <option value= "Abhiramam">Abhiramam</option>
         <option value= "Abhiru">Abhiru</option>
@@ -384,6 +385,7 @@
         <option value= "Kamaripriya">Kamaripriya</option>
         <option value= "Kamas">Kamas</option>
         <option value= "Kambhoji">Kambhoji</option>
+        <option value= "Kambhoji">Kambhoji</option>
         <option value= "Kanada">Kanada</option>
         <option value= "Kanakadri">Kanakadri</option>
         <option value= "Kanakakusumavali">Kanakakusumavali</option>
@@ -625,6 +627,7 @@
         <option value= "Poornakalanidhi">Poornakalanidhi</option>
         <option value= "Poornakambhoji">Poornakambhoji</option>
         <option value= "Poornalalitha">Poornalalitha</option>
+        <option value= "Poornapanchamam">Poornapanchamam</option>
         <option value= "Poornapanchamam">Poornapanchamam</option>
         <option value= "Poornasaveri">Poornasaveri</option>
         <option value= "Poornashadjam">Poornashadjam</option>
@@ -961,15 +964,13 @@
         <option value= "Yagini">Yagini</option>
         <option value= "Yaman">Yaman</option>
         <option value= "Yamuna">Yamuna</option>
+    </datalist>
 
-
-    </select>
-    
 	<h2> </h2>    <!--<label for="AAnotes">Arohanam and Avarohanam notes:</label>
 	<input name="AAnotes" id="AAnotes" text="notes" size=80>-->
 
-	<br><label for="AAnotes">Arohanam:</label><input name="arohanam" id="arohanam" text="arohanam" size=80><br>
-	<label for="AAnotes">Avarohanam:</label><input name="avarohanam" id="avarohanam" text="avarohanam" size=80><br>
+	<br><label>Arohanam:</label><input name="arohanam" id="arohanam" text="arohanam" size=80><br>
+	<label>Avarohanam:</label><input name="avarohanam" id="avarohanam" text="avarohanam" size=80><br>
 
     <div>
 		<label>Note duration (seconds):</label> 
@@ -983,7 +984,8 @@
 		var button = document.getElementById("playragam");
         button.text = "Play";
 		function getAAnotes() {
-			var ragaselect = document.getElementById("raga").value;
+            var ragaselect = document.querySelector('#raganame').value;
+		//	var ragaselect = document.getElementById("raganame").value;
 			var pattern=new RegExp("[ABCDEFGHIJKLabcdefghijkl]");
 			if (pattern.test(ragaselect[0])) {
 				//console.log("a to l");
