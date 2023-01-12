@@ -28,7 +28,7 @@
     </select>
 	
     <h2> </h2>    <label for="raga">select raga:</label>
-    <input type="text" name="raganame" id="raganame" list="raga"><br>    
+    <input type="text" name="raganame" id="raganame" list="raga" onchange="populate()"><br>    
     <datalist id="raga" >
         <option value= "Abheri">Abheri</option>
         <option value= "Abhiramam">Abhiramam</option>
@@ -982,6 +982,9 @@
     <script type="text/JavaScript"> 
 		var button = document.getElementById("playragam");
         button.text = "Play";
+	    	function populate() {
+			getAAnotes();
+		}
 		function getAAnotes() {
             var ragaselect = document.querySelector('#raganame').value;
 		//	var ragaselect = document.getElementById("raganame").value;
