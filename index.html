@@ -1999,25 +1999,22 @@
 			var notesText2="";
 			var info="";
 			var pattern=new RegExp("[ABCDEFGHIJKLabcdefghijkl]");
-			if (pattern.test(ragaselect)) {
+			if (pattern.test(ragaselect[0])) {
 				for (var i=0; i<ragas.length; i++) {
-				if (ragas[i][0].includes(ragaselect)!==-1) {
+				if (ragas[i][0].localeCompare(ragaselect)==0) {
 						console.log(ragaselect+"\n");
 						console.log(ragas[i][1]+"\n");
 						console.log(ragas[i][2]+"\n");
 						console.log(ragas[i][3]+"\n");
-						notesText = ragas[i][2];
-						notesText2 = ragas[i][3];
-						info = ragas[i][1];
+						document.getElementById("info").value = ragas[i][1];
+						document.getElementById("Arohanam").value = ragas[i][2];
+						document.getElementById("Avarohanam").value = ragas[i][3];
 						break;
 				} else {
-					console.log("shove it")
+					console.log("shove it");
 				}					
 				}
 			}
-			document.getElementById("info").value = info;
-			document.getElementById("Arohanam").value = notesText;
-			document.getElementById("Avarohanam").value = notesText2;
 		}
 		function getRaga() {
             var arohana = document.getElementById("Arohanam").value;
@@ -2048,8 +2045,8 @@
 			}
 			document.getElementById("raganame").value = raga;
 			document.getElementById("info").value = info;
-			document.getElementById("Arohanam").value = ragas[i][2];
-			document.getElementById("Avarohanam").value = ragas[i][3];
+			document.getElementById("Arohanam").value = notesText;
+			document.getElementById("Avarohanam").value = notesText2;
 		}
         function getSruthiFrequency() {
             var sruthiletter = document.getElementById("Sruthi").value;
