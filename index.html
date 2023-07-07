@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<div class="page">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -797,7 +799,7 @@
         <option value= "Shakunthala">Shakunthala</option>
 		<option value= "Shamalangi">Shamalangi</option>
         <option value= "Shankara">Shankara</option>
-        <option value= "Shankarabharanam">shankarabharanam</option>
+        <option value= "Shankarabharanam">Shankarabharanam</option>
         <option value= "Shankaraharigowla">Shankaraharigowla</option>
         <option value= "Shankaramohana">Shankaramohana</option>
         <option value= "Shankari">Shankari</option>
@@ -1019,17 +1021,14 @@
 	<br><label>Arohana:</label><input name="Arohanam" id="Arohanam" text="Arohanam" size=80><br>
 	<label>Avarohana:</label><input name="Avarohanam" id="Avarohanam" text="Avarohanam" size=80><br>
 
-	<div>
-		<br>
-        <div class="button medium-btn" id="search_raga" type="button" style="font-size: 15px" onclick="getRaga()">Search raga</div><br>
-    </div>
-
 	<label>Raga Info:</label><input name="info" id="info" text="Info" size=80><br>
 	<br>
-    <div>
-		<br>
-        <div class="button big-btn" id="playragam" type="button" style="font-size: 30px" onclick="toggle()">Play</div><br>
-    </div>
+        <div class="button big-btn" id="playragam" type="button" style="font-size: 30px" onclick="toggle()">Play</div>
+	<br>
+	<label>To find a raga based on selected notes:</label>	
+	<input type="submit" style="font-size: 15px" onclick="location.href = 'reverse_raga.html'" width="48" height="48" value="Go to next page">
+	</input>
+
 
     <script type="text/JavaScript"> 
 		var ragas = [
@@ -1201,7 +1200,7 @@
                                         [ "Dhavalambari","Melakarta 49","S0 R1 G3 M2 P D1 N1 S1","S1 N1 D1 P M2 G3 R1 S0 "],
                                         [ "Dhavalangam","Dhavalambari janya","S0 R1 G3 M2 P D1 S1","S1 N1 D1 P M2 G3 R1 S0 "],
                                         [ "Dheerahindolam","Shulini janya","S0 G3 M1 D2 N3 S1","S1 N3 D2 P M1 G3 R3 S0 "],
-                                        [ "Dheera-shankarabharanam","","S0 R2 G3 M1 P D2 N3 S1","S1 N3 D2 P M1 G3 R2 S0 "],
+                                        [ "Dheera-shankarabharanam","Melakarta 29","S0 R2 G3 M1 P D2 N3 S1","S1 N3 D2 P M1 G3 R2 S0 "],
                                         [ "Dhenuka","Melakarta 9","S0 R1 G2 M1 P D1 N3 S1","S1 N3 D1 P M1 G2 R1 S0 "],
                                         [ "Dhowmya","Ragavardhini janya","S0 R3 G3 M1 P D1 N2 P S1","S1 N2 D1 P M1 G3 R3 S0 "],
                                         [ "Dhowreyani","Shubhapanthuvarali janya","S0 R1 G2 M2 N3 S1","S1 N3 D1 P M2 G2 R1 S0 "],
@@ -1761,7 +1760,7 @@
                                         [ "Shankara","Dheera-shankarabharanam janya","S0 G3 P S1","S1 N3 D2 P G3 P R2 G3 S0 "],
                                         [ "Shankarabharanam","Melakartha 29","S0 R2 G3 M1 P D2 N3 S1","S1 N3 D2 P M1 G3 R2 S0 "],
                                         [ "Shankaraharigowla","Harikambhoji Janya","S0 R2 G3 M1 P D2 N3 S1","S1 N2 D2 P M1 G3 R2 S0 "],
-                                        [ "Shankaramohana","Dheera-shankarabharanam janya","S0 R2 G3 P N3 D2 S0 N3 S1 D2 P G3 R2 S0 "],
+                                        [ "Shankaramohana","Dheera-shankarabharanam janya","S0 R2 G3 P N3 D2 S1", "S1 N3 S1 D2 P G3 R2 S0 "],
                                         [ "Shankari","Dheera-shankarabharanam janya","S0 G3 P N3 S1","S1 N3 P G3 S0  "],
                                         [ "Shanmukhapriyaa","Melakarta 56, evening raga","S0 R2 G2 M2 P D1 N2 S1","S1 N2 D1 P M2 G2 R2 S0 "],
                                         [ "Shanmukhi","Shanmukhapriya janya","S0 R1 G2 M2 D1 N2 S1","S1 N2 D1 M2 G2 R1 S0 "],
@@ -2002,6 +2001,7 @@
 						document.getElementById("info").value = ragas[i][1];
 						document.getElementById("Arohanam").value = ragas[i][2];
 						document.getElementById("Avarohanam").value = ragas[i][3];
+						print("looking");
 						break;
 				} else {
 					console.log("shove it");
@@ -2009,38 +2009,7 @@
 				}
 			}
 		}
-		function getRaga() {
-            var arohana = document.getElementById("Arohanam").value;
-			var avarohana = document.getElementById("Avarohanam").value;
-			console.log("\n");
-			console.log("User input:\n");
-			console.log(arohana);
-			console.log(avarohana);			
-			var raga = "";
-			var info="";
-			var pattern=new RegExp("[ABCDEFGHIJKLabcdefghijkl]");
-			if (pattern.test(arohana) && pattern.test(avarohana)) {
-				for (var i=0; i<ragas.length; i++) {
-				if (!ragas[i][2].localeCompare(arohana) && !ragas[i][3].localeCompare(avarohana)) {
-						console.log(ragas[i][0]+"\n");
-						console.log(ragas[i][1]+"\n");
-						console.log(ragas[i][2]+"\n");
-						console.log(ragas[i][3]+"\n");
-						raga = ragas[i][0];
-						info = ragas[i][1];
-						notesText = ragas[i][2];
-						notesText2 = ragas[i][3];
-						break;
-				} else {
-					console.log("shove it")
-				}					
-				}
-			}
-			document.getElementById("raganame").value = raga;
-			document.getElementById("info").value = info;
-			document.getElementById("Arohanam").value = notesText;
-			document.getElementById("Avarohanam").value = notesText2;
-		}
+		
         function getSruthiFrequency() {
             var sruthiletter = document.getElementById("Sruthi").value;
             switch (sruthiletter) {
@@ -2215,9 +2184,7 @@
     //END OF CODE TO GENERATE FREQUENCY TONE
 		
     </script>
-	</input>
-
-
-
 </body>
+</div>
 </html>
+
